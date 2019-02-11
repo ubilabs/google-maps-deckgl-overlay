@@ -8,6 +8,7 @@ import TripsLayer from '@deck.gl/experimental-layers/src/trips-layer/index';
 import {GeoJsonLayer, IconLayer} from '@deck.gl/layers';
 import {getTrips} from './src/flight-trips.js';
 import {randomPoint} from '@turf/random';
+import styles from './basemap.json'; // https://snazzymaps.com/style/1261/dark
 
 const gmUrl = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=visualization&v=3.34`
 const TILE_SIZE = 256;
@@ -18,7 +19,7 @@ const INITIAL_VIEW_STATE = {
   pitch: 0
 };
 const mapOptions = {
-  mapTypeId: 'satellite',
+  styles,
   center: {
     lat: INITIAL_VIEW_STATE.latitude,
     lng: INITIAL_VIEW_STATE.longitude
@@ -59,7 +60,7 @@ function addDeckListeners(deck) {
   window.addEventListener('click', event => {
     const {clientX: x, clientY: y} = event;
     const picked = deck.pickObject({x, y, radius: 4, layerIds: ['icon-layer']});
-  
+
     if (picked) {
       alert('Clicked on a Deck.gl object');
     }
