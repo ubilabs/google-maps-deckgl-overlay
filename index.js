@@ -9,8 +9,6 @@ import {GeoJsonLayer, IconLayer} from '@deck.gl/layers';
 import {getTrips} from './src/flight-trips.js';
 import {randomPoint} from '@turf/random';
 
-console.log('key', process.env.GOOGLE_MAPS_API_KEY);
-
 const gmUrl = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=visualization&v=3.34`
 const TILE_SIZE = 256;
 const INITIAL_VIEW_STATE = {
@@ -107,10 +105,6 @@ function getLayers(frame) {
   const ICON_MAPPING = {
     marker: {x: 0, y: 0, width: 128, height: 128, anchorY: 128, anchorX: 64, mask: true}
   };
-
-  const iconData = [
-    {name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638]},
-  ]
 
   return [
     new IconLayer({
