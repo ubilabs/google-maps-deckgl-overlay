@@ -6,7 +6,6 @@ export default function initDeck(map, initialViewState) {
   let {clientWidth, clientHeight} = mapEl;
   canvasEl.width = clientWidth;
   canvasEl.height = clientHeight;
-  canvasEl.position = 'absolute';
 
   const deck = new Deck({
     canvas: canvasEl,

@@ -12,12 +12,10 @@ export default function initOverlay(map, deck, tileSize) {
   window.addEventListener('resize', () => {
     clientWidth = mapEl.clientWidth;
     clientHeight = mapEl.clientHeight;
-    canvasEl.width = clientWidth;
-    canvasEl.height = clientHeight;
 
     deck.setProps({
       width: clientWidth,
-      heigth: clientHeight
+      height: clientHeight
     });
   });
 
